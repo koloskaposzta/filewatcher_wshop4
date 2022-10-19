@@ -49,5 +49,18 @@ namespace FileWatcherServer.Controllers
             }
             return Unauthorized();
         }
+
+        [HttpPut]
+        public async Task<IActionResult> InsertUser([FromBody] RegisterViewModel model)
+        {
+            var user = new IdentityUser
+            {
+                Email = model.Email,
+                SecurityStamp = Guid.NewGuid().ToString(),
+            };
+            await _userManager.CreateAsync(user, model.Password);
+            await _userManager.AddToRoleAsync(user, "Customer");
+            return Ok();
+        }
     }
 }
