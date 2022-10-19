@@ -47,28 +47,16 @@ namespace FileWatcherDesktop
                 new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json")
             );
 
-
-            try
-            {
                 var response = await client.PostAsJsonAsync<LoginViewModel>("auth", new LoginViewModel()
                 {
                     Username = tb_username.Text,
                     Password = tb_password.Password,
-                    //Path = tb_path.Text,
+                    Path = tb_path.Text,
                 });
                 var token = await response.Content.ReadAsAsync<TokenModel>();
                 token.Expiration = token.Expiration.ToLocalTime();
-            }
-            catch (Exception error)
-            {
-                throw error;
-            }
- 
-
-
-
-            //MainWindow mw = new MainWindow(token);
-            //mw.ShowDialog();
+            MainWindow mw = new MainWindow(token);
+            mw.ShowDialog();
         }
 
         private void Register_Button_Click(object sender, RoutedEventArgs e)
