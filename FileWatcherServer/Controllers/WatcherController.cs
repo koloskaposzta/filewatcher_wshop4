@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace FileWatcherServer.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class WatcherController : ControllerBase
     {
         IHubContext<EventHub> hub;
@@ -25,4 +27,5 @@ namespace FileWatcherServer.Controllers
             await hub.Clients.All.SendAsync("Changed", wm);
         }
     }
+
 }
