@@ -1,23 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FileWatcherServer.Hubs;
+using FileWatcherServer.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 
 namespace FileWatcherServer.Controllers
 {
     public class WatcherController : ControllerBase
     {
-        string path;
-        FileSystemWatcher watcher = new FileSystemWatcher();
+        IHubContext<EventHub> hub;
 
-        public async void AddPath([FromBody] string path)
+        [HttpPost]
+        public async void Changed([FromBody] string message)
         {
-           watcher.Path = path;
-        }
-
-        public void FolderWatcherChange()
-        {
-            //watcher.Created += new FileSystemEventHandler(OnChanged);
-            //watcher.Changed += new FileSystemEventHandler(OnChanged);
-            //watcher.Deleted += new FileSystemEventHandler(OnChanged);
-
+            WatcherModel wm=new WatcherModel();
+            wm.UserName= this.User.Identity.Name;
+            wm.Message = message;
+            await hub.Clients.All.SendAsync("Changed", wm);
         }
     }
 }
