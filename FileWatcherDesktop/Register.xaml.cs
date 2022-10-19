@@ -41,12 +41,12 @@ namespace FileWatcherDesktop
             else
             {
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("http://localhost:5095");
+                client.BaseAddress = new Uri("http://localhost:7045");
                 client.DefaultRequestHeaders.Accept.Add(
                     new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json")
                 );
 
-                var response = await client.PutAsJsonAsync<RegisterViewModel>("auth", model);
+                var response = await client.PutAsJsonAsync<RegisterViewModel>("Auth", model);
                 model.Email = tb_email.Text;
                 model.Password = tb_password.Password;
 

@@ -42,7 +42,7 @@ namespace FileWatcherDesktop
         private async void Login_Button_Click(object sender, RoutedEventArgs e)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:5095");
+            client.BaseAddress = new Uri("http://localhost:7045/");
             client.DefaultRequestHeaders.Accept.Add(
                 new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json")
             );
@@ -51,14 +51,14 @@ namespace FileWatcherDesktop
             {
                 Username = tb_username.Text,
                 Password = tb_password.Password,
-                Path = tb_path.Text,
+                //Path = tb_path.Text,
             }) ;
 
             var token = await response.Content.ReadAsAsync<TokenModel>();
             token.Expiration = token.Expiration.ToLocalTime();
 
-            MainWindow mw = new MainWindow(token);
-            mw.ShowDialog();
+            //MainWindow mw = new MainWindow(token);
+            //mw.ShowDialog();
         }
 
         private void Register_Button_Click(object sender, RoutedEventArgs e)

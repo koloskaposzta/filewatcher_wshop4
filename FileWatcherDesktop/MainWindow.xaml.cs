@@ -20,7 +20,7 @@ namespace FileWatcherDesktop
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(TokenModel token)
+        public MainWindow()
         {
             InitializeComponent();
         }
