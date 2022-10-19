@@ -24,6 +24,7 @@ namespace FileWatcherDesktop
         {
             public string Email { get; set; }
             public string Password { get; set; }
+            public string UserName { get; set; }
         }
         private RegisterViewModel model = new RegisterViewModel();
         public Register()
@@ -49,6 +50,7 @@ namespace FileWatcherDesktop
                 var response = await client.PutAsJsonAsync<RegisterViewModel>("Auth", model);
                 model.Email = tb_email.Text;
                 model.Password = tb_password.Password;
+                model.UserName = tb_email.Text.Substring(0, tb_email.Text.IndexOf('@'));
 
                 if (response.IsSuccessStatusCode)
                 {
