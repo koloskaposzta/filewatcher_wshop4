@@ -1,4 +1,5 @@
 ﻿using FileWatcherServer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -61,6 +62,19 @@ namespace FileWatcherServer.Controllers
             await _userManager.CreateAsync(user, model.Password);
             await _userManager.AddToRoleAsync(user, "Customer");
             return Ok();
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> GetUserInfos()
+        {
+            var user = _userManager.Users.FirstOrDefault(t => t.Email == this.User.Identity.Name);
+            return Ok(new
+            {
+                UserName = user.UserName,
+                Email = user.Email,
+                Roles = await _userManager.GetRolesAsync(user)
+            });
         }
     }
 }

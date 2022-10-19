@@ -1,4 +1,5 @@
 using FileWatcherServer.Data;
+using FileWatcherServer.Hubs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -64,7 +65,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-//app.MapHub<EventHub>("/events");
+app.MapHub<EventHub>("/events");
 
 app.UseAuthentication();
 app.UseAuthorization();
