@@ -25,14 +25,15 @@ namespace FileWatcherDesktop
 
         public DateTime Expiration { get; set; }
     }
+    public class LoginViewModel
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Path { get; set; }
+    }
     public partial class Login : Window
     {
-        public class LoginViewModel
-        {
-            public string Username { get; set; }
-            public string Password { get; set; }
-           public string Path { get; set; }
-        }
+
 
         public Login()
         {
@@ -47,15 +48,18 @@ namespace FileWatcherDesktop
                 new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json")
             );
 
-                var response = await client.PostAsJsonAsync<LoginViewModel>("auth", new LoginViewModel()
-                {
-                    Username = tb_username.Text,
-                    Password = tb_password.Password,
-                    Path = tb_path.Text,
-                });
-                var token = await response.Content.ReadAsAsync<TokenModel>();
-                token.Expiration = token.Expiration.ToLocalTime();
-            MainWindow mw = new MainWindow(token);
+            var model = new LoginViewModel()
+            {
+                Username = tb_username.Text,
+                Password = tb_password.Password,
+                //Path = tb_path.Text,
+            };
+            var response = await client.PostAsJsonAsync<LoginViewModel>("auth", model);
+
+            var token = await response.Content.ReadAsAsync<TokenModel>();
+            token.Expiration = token.Expiration.ToLocalTime();
+            model.Path = tb_path.Text;
+            MainWindow mw = new MainWindow(token, model);
             mw.ShowDialog();
         }
 
