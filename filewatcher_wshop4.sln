@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWatcherServer", "FileWatcherServer\FileWatcherServer.csproj", "{3F8BC0C7-73A0-4F17-97D0-6D9563EB1007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWatcherDesktop", "FileWatcherDesktop\FileWatcherDesktop.csproj", "{AF8E3FC6-E6C5-47B9-A71C-ECBB9A40B19D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F8BC0C7-73A0-4F17-97D0-6D9563EB1007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F8BC0C7-73A0-4F17-97D0-6D9563EB1007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F8BC0C7-73A0-4F17-97D0-6D9563EB1007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F8BC0C7-73A0-4F17-97D0-6D9563EB1007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF8E3FC6-E6C5-47B9-A71C-ECBB9A40B19D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF8E3FC6-E6C5-47B9-A71C-ECBB9A40B19D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF8E3FC6-E6C5-47B9-A71C-ECBB9A40B19D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF8E3FC6-E6C5-47B9-A71C-ECBB9A40B19D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C282BA21-1E76-423C-AD17-1E1E924688A0}
+	EndGlobalSection
+EndGlobal
