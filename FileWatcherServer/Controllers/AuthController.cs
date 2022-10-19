@@ -57,6 +57,7 @@ namespace FileWatcherServer.Controllers
             var user = new IdentityUser
             {
                 Email = model.Email,
+                UserName = model.UserName,
                 SecurityStamp = Guid.NewGuid().ToString(),
             };
             await _userManager.CreateAsync(user, model.Password);
