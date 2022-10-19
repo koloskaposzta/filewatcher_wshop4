@@ -24,7 +24,7 @@ namespace FileWatcherServer.Controllers
             WatcherModel wm = new WatcherModel();
             wm.UserName= this.User.Identity.Name;
             wm.Message = message;
-            await hub.Clients.All.SendAsync("Changed", wm);
+            await hub.Clients.All.SendAsync("FileChanged", wm);
         }
     }
 
