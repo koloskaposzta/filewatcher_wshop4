@@ -8,7 +8,7 @@
         Title="" Height="450" Width="800">
 
     <StackPanel>
-        <ListBox ItemsSource="{Binding Watchers}">
+        <ListBox ItemsSource="{Binding watchers}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
