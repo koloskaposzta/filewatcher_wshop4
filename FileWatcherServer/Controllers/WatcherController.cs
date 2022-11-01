@@ -19,6 +19,7 @@ namespace FileWatcherServer.Controllers
             _userManager = userManager;
         }
         [HttpPost]
+        [Route("[action]")]
         public async void Changed([FromBody] string message)
         {
             WatcherModel wm = new WatcherModel();
