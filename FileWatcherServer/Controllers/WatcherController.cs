@@ -3,6 +3,7 @@ using FileWatcherServer.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.FileSystemGlobbing;
 
 namespace FileWatcherServer.Controllers
 {
@@ -10,6 +11,7 @@ namespace FileWatcherServer.Controllers
     [Route("[controller]")]
     public class WatcherController : ControllerBase
     {
+        static List<WatcherModel> watchers = new List<WatcherModel>();
         IHubContext<EventHub> hub;
         UserManager<IdentityUser> _userManager;
 
@@ -25,7 +27,14 @@ namespace FileWatcherServer.Controllers
             WatcherModel wm = new WatcherModel();
             wm.UserName= this.User.Identity.Name;
             wm.Message = message;
+            watchers.Add(wm);
             await hub.Clients.All.SendAsync("FileChanged", wm);
+        }
+
+        [HttpGet]
+        public IEnumerable<WatcherModel> Watchers()
+        {
+            return watchers;
         }
     }
 

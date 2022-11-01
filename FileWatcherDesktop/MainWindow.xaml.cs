@@ -35,7 +35,7 @@ namespace FileWatcherDesktop
     }
     public partial class MainWindow : Window ,INotifyPropertyChanged
     {
-        public ObservableCollection<WatcherModel> Watchers { get; set; }
+        public ObservableCollection<WatcherModel> watchers { get; set; }
         TokenModel token;
         public LoginViewModel user;
         FileSystemWatcher watcher;
@@ -95,12 +95,13 @@ namespace FileWatcherDesktop
         }
         async Task Refresh(WatcherModel t)
         {
-            Watchers = new ObservableCollection<WatcherModel>(await GetWatchers());
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Watchers"));
+            watchers = new ObservableCollection<WatcherModel>(await Watchers());
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("watchers"));
         }
-        async Task<IEnumerable<WatcherModel>> GetWatchers()
+        async Task<IEnumerable<WatcherModel>> Watchers()
         {
-            var response = await client.GetAsync("/watcher");
+
+            var response = await client.GetAsync("/Watcher");
             if (response.IsSuccessStatusCode)
             {
                 return await response.Content.ReadAsAsync<IEnumerable<WatcherModel>>();
