@@ -6,7 +6,18 @@
         xmlns:local="clr-namespace:FileWatcherDesktop"
         mc:Ignorable="d"
         Title="" Height="450" Width="800">
+
     <StackPanel>
-        <ListBox x:Name="lb"></ListBox>
+        <ListBox ItemsSource="{Binding Watchers}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Label Content="{Binding UserName}" ContentStringFormat="User: {0}"/>
+                        <Label Content="{Binding Message}" ContentStringFormat="Message: {0}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox x:Name="lb"></ListBox>
+        </ListBox>
     </StackPanel>
 </Window>
