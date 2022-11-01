@@ -47,6 +47,7 @@ namespace FileWatcherDesktop
 
         public MainWindow(TokenModel token, LoginViewModel model)
         {
+            this.DataContext = this;
             this.token = token;
             this.user = model;
             watcher = new FileSystemWatcher(model.Path);
