@@ -17,7 +17,6 @@
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-            <ListBox x:Name="lb"></ListBox>
         </ListBox>
     </StackPanel>
 </Window>
